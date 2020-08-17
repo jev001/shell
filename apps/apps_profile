@@ -1,0 +1,11 @@
+## APPS_HOME
+export APPS_HOME=/home/ec2-user/apps
+
+## APPS
+export ALL_APP_PATH=$(find $APPS_HOME -type l)
+
+for app in $ALL_APP_PATH
+do
+  appName=$(echo $app |awk -F / '{gsub(/-/,"_")}{print $NF}')
+  export $appName=$app
+done

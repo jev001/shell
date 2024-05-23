@@ -37,7 +37,7 @@ echo md5_all="\`comm  <(echo \$allfiles) <(echo \$uniqfiles) -2 -3 | cut -c -32\
 md5_all=`comm  <(echo $allfiles) <(echo $uniqfiles) -2 -3 | cut -c -32|tr '\n' '\0'`
 
 #echo "uniq_all_files=\`echo \$md5_all |xargs -I {}  grep {} <(echo \$allfiles) |tr '\n' '\0' \`"
-if [ -z "$depth" ] ; then
+if [ -z "$output_file" ] ; then
   echo $md5_all |xargs -I {}  grep {} <(echo $allfiles)
 else
   echo $md5_all |xargs -I {}  grep {} <(echo $allfiles) >$output_file

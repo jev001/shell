@@ -38,7 +38,8 @@ md5_all=`comm  <(echo $allfiles) <(echo $uniqfiles) -2 -3 | cut -c -32|tr '\n' '
 
 #echo "uniq_all_files=\`echo \$md5_all |xargs -I {}  grep {} <(echo \$allfiles) |tr '\n' '\0' \`"
 if [ -z "$output_file" ] ; then
-  echo $md5_all |xargs -I {}  grep {} <(echo $allfiles)
+  echo "\$md5_all |xargs -I {}  grep {} <(echo \$allfiles)"
+  $md5_all |xargs -I {}  grep {} <(echo $allfiles)
 else
   echo $md5_all |xargs -I {}  grep {} <(echo $allfiles) >$output_file
   echo "结果已保存到 $output_file 文件。"
